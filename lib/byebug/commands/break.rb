@@ -35,7 +35,6 @@ module Byebug
     end
 
     def execute
-      puts caller
       return puts(help) unless @match[1]
 
       b = line_breakpoint(@match[1]) || method_breakpoint(@match[1])
