@@ -125,7 +125,8 @@ module Byebug
     def display_lines(min, max)
       puts "\n[#{min}, #{max}] in #{frame.file}"
 
-      opts = { output: Setting[:highlight] ? :term : :plain }
+      opts = { output: Setting[:highlight] == :plain ? :plain : :term,
+               style: Setting[:highlight] }
       min.upto(max).each do |lineno|
         line = get_line(frame.file, lineno + 1, opts)
         mark = lineno + 1 == frame.line ? '=> ' : '   '
